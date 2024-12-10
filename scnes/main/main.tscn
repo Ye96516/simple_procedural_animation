@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=4 uid="uid://dwu0n7auwqqv0"]
+
+[ext_resource type="Script" path="res://scnes/main/pivot.gd" id="1_fl8pw"]
+[ext_resource type="Texture2D" uid="uid://b6q51bqc3pcyq" path="res://art/tilemap/马路.png" id="2_f1bdi"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s3smn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7sx6p"]
+texture = ExtResource("2_f1bdi")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+2:1/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+3:3/0 = 0
+3:4/0 = 0
+3:5/0 = 0
+2:4/0 = 0
+1:4/0 = 0
+0:4/0 = 0
+0:3/0 = 0
+0:5/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+6:3/0 = 0
+8:2/0 = 0
+8:1/0 = 0
+7:1/0 = 0
+9:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vmp2j"]
+sources/0 = SubResource("TileSetAtlasSource_7sx6p")
+
+[node name="Main" type="Node2D"]
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2(822, 396)
+script = ExtResource("1_fl8pw")
+
+[node name="White" type="Sprite2D" parent="Pivot"]
+unique_name_in_owner = true
+rotation = -1.74533
+scale = Vector2(500, 20)
+texture = SubResource("CanvasTexture_s3smn")
+offset = Vector2(0.5, 0)
+
+[node name="Black" type="Sprite2D" parent="Pivot"]
+unique_name_in_owner = true
+self_modulate = Color(0.0156863, 0.0392157, 0.0117647, 1)
+rotation = 2.0944
+scale = Vector2(500, 20)
+texture = SubResource("CanvasTexture_s3smn")
+offset = Vector2(0.5, 0)
+
+[node name="OK" type="Button" parent="."]
+offset_left = 838.0
+offset_top = 784.0
+offset_right = 1057.0
+offset_bottom = 925.0
+
+[node name="BlackEdit" type="LineEdit" parent="."]
+unique_name_in_owner = true
+offset_left = 369.0
+offset_top = 792.0
+offset_right = 600.0
+offset_bottom = 939.0
+theme_override_font_sizes/font_size = 64
+placeholder_text = "黑"
+
+[node name="WhiteEdit" type="LineEdit" parent="."]
+unique_name_in_owner = true
+offset_left = 1295.0
+offset_top = 801.0
+offset_right = 1524.0
+offset_bottom = 942.0
+theme_override_font_sizes/font_size = 64
+placeholder_text = "白"
+
+[node name="CurrentDegrees" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 529.0
+offset_bottom = 432.0
+theme_override_font_sizes/font_size = 64
+autowrap_mode = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAIAAAAEAAEAAAADAAMAAAAEAAIAAAACAAIAAAABAAAAAAAEAAIAAAAFAAEAAAAGAAIAAAAHAAQAAAADAAAAAAACAAAAAAACAAAAAAABAAAAAAADAAEAAAAEAAAAAAAFAAIAAAAGAAQAAAAFAAEAAAAGAAMAAAAFAAAAAAAGAAMAAAAFAP//AAAIAAEAAAAGAP//AAAJAAEAAAAEAP//AAAHAAEAAAADAP//AAAHAAEAAAACAP//AAAHAAEAAAAHAAEAAAADAAMAAAAHAAMAAAADAAMAAAAHAAIAAAADAAQAAAAEAAQAAAABAAQAAAADAAQAAAAAAAQAAAADAAUAAAAAAAUAAAABAAAAAAAAAAAAAAABAAEAAAAAAAEAAAABAAIAAAAAAAIAAAA=")
+tile_set = SubResource("TileSet_vmp2j")
+
+[connection signal="pressed" from="OK" to="Pivot" method="_on_ok_pressed"]
